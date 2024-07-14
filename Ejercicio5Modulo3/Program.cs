@@ -14,11 +14,11 @@ namespace Ejercicio5Modulo3
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var baseAddress = builder.Configuration.GetSection("SEED_RESULT_NUMBER").Value;
 
-            // Add services to the container.
-
+         
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
             builder.Services.AddEndpointsApiExplorer();
       
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -39,15 +39,15 @@ namespace Ejercicio5Modulo3
             builder.Services.AddRefitClient<IRandomUserService>()
                 .ConfigureHttpClient(client =>
                 {
-                    client.BaseAddress = new Uri("https://randomuser.me/api");
+                    client.BaseAddress = new Uri(baseAddress);
                     
                     client.DefaultRequestHeaders.UserAgent.ParseAdd("dotnet-docs");
                     
 
                 })
-                .AddHttpMessageHandler<DebuggingHandler>(); // Añadir el DelegatingHandler aquí
+                .AddHttpMessageHandler<DebuggingHandler>(); 
 
-// Asegúrate de registrar también tu DelegatingHandler
+
             builder.Services.AddTransient<DebuggingHandler>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
             
