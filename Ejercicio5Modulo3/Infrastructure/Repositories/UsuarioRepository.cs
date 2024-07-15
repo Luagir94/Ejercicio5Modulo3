@@ -1,11 +1,12 @@
 using Ejercicio5Modulo3.Data;
 using Ejercicio5Modulo3.Domain.Entities;
 using Ejercicio5Modulo3.Domain.Enums;
+using Ejercicio5Modulo3.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ejercicio5Modulo3.Infrastructure.Repositories;
 
-public class UsuarioRepository
+public class UsuarioRepository : IUsuarioRepository
 {
     private readonly ApplicationDbContext _context;
     

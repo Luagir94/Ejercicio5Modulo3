@@ -1,6 +1,7 @@
 using Ejercicio5Modulo3.Domain.Contracts;
 using Ejercicio5Modulo3.Domain.Entities;
 using Ejercicio5Modulo3.Domain.Enums;
+using Ejercicio5Modulo3.Domain.Repositories;
 using Ejercicio5Modulo3.Infrastructure.Dtos;
 using Ejercicio5Modulo3.Infrastructure.Repositories;
 
@@ -10,9 +11,9 @@ public class UsuarioService : IUsuarioService
 {
     public readonly IRandomUserService  _randomUserService; 
     
-    public readonly UsuarioRepository _usuarioRepository;
+    public readonly IUsuarioRepository _usuarioRepository;
     
-    public UsuarioService( IRandomUserService randomUserService, UsuarioRepository usuarioRepository)
+    public UsuarioService( IRandomUserService randomUserService, IUsuarioRepository usuarioRepository)
     {
         _randomUserService = randomUserService;
         _usuarioRepository = usuarioRepository;

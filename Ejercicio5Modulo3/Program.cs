@@ -1,7 +1,7 @@
-using Ejercicio5Modulo3.Api.Middlewares;
 using Ejercicio5Modulo3.Data;
 using Ejercicio5Modulo3.Domain.Contracts;
 using Ejercicio5Modulo3.Domain.Enums;
+using Ejercicio5Modulo3.Domain.Repositories;
 using Ejercicio5Modulo3.Infrastructure.Repositories;
 using Ejercicio5Modulo3.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
@@ -50,9 +50,7 @@ namespace Ejercicio5Modulo3
 
             builder.Services.AddTransient<DebuggingHandler>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-            
-            
-            builder.Services.AddScoped<UsuarioRepository>();
+            builder.Services.AddScoped<IUsuarioRepository,UsuarioRepository>();
             
             
             var app = builder.Build();
